@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#0D1117">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="16dp">
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_arrow_back"
+                android:contentDescription="Volver"
+                app:tint="#FFFFFF" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Personalizados"
+                android:textColor="#FFFFFF"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginHorizontal="16dp" />
+
+            <View
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+        </LinearLayout>
+
+        <!-- Contenido principal con fondo claro -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="#F5F5F5">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <!-- Título -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Personalización"
+                    android:textColor="#374151"
+                    android:textSize="32sp"
+                    android:textStyle="bold" />
+
+                <!-- Descripción inicial -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Imagine caminar con zapatos que no sólo se ajusten perfectamente a sus pies, sino que también expresen su personalidad y autenticidad."
+                    android:textColor="#6B7280"
+                    android:textSize="14sp"
+                    android:lineSpacingMultiplier="1.3"
+                    android:gravity="center" />
+
+                <!-- Grid de imágenes de zapatos personalizados -->
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:columnCount="3"
+                    android:rowCount="2"
+                    android:alignmentMode="alignMargins"
+                    android:useDefaultMargins="true">
+
+                    <!-- Fila 1 -->
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_columnWeight="1"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/ic_shoe_placeholder"
+                        android:background="#FFFFFF"
+                        android:padding="8dp" />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_columnWeight="1"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/ic_shoe_placeholder"
+                        android:background="#FFFFFF"
+                        android:padding="8dp" />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_columnWeight="1"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/ic_shoe_placeholder"
+                        android:background="#FFFFFF"
+                        android:padding="8dp" />
+
+                    <!-- Fila 2 -->
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_columnWeight="1"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/ic_shoe_placeholder"
+                        android:background="#FFFFFF"
+                        android:padding="8dp" />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_columnWeight="1"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/ic_shoe_placeholder"
+                        android:background="#FFFFFF"
+                        android:padding="8dp" />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"
+                        android:layout_columnWeight="1"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/ic_shoe_placeholder"
+                        android:background="#FFFFFF"
+                        android:padding="8dp" />
+
+                </GridLayout>
+
+                <!-- Descripción del servicio -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="Con nuestro servicio de personalización, esto es posible. Le invitamos a enviarnos su diseño, para hacerlo realidad, creando un par de zapatos exclusivos para usted."
+                    android:textColor="#374151"
+                    android:textSize="14sp"
+                    android:lineSpacingMultiplier="1.3" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Para comenzar el proceso de personalización o si tiene alguna pregunta sobre nuestros servicios, por favor, no dude en ponerse en contacto con nosotros."
+                    android:textColor="#374151"
+                    android:textSize="14sp"
+                    android:lineSpacingMultiplier="1.3" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Estaremos encantados de guiarle en cada paso hacia la creación de su calzado ideal."
+                    android:textColor="#374151"
+                    android:textSize="14sp"
+                    android:lineSpacingMultiplier="1.3" />
+
+                <!-- Botón Contáctanos -->
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnContactanos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="24dp"
+                    android:text="Contáctanos"
+                    android:textColor="#FFFFFF"
+                    android:textAllCaps="false"
+                    android:textSize="16sp"
+                    android:paddingHorizontal="32dp"
+                    android:paddingVertical="12dp"
+                    android:background="@drawable/bg_button_green" />
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+</ScrollView>

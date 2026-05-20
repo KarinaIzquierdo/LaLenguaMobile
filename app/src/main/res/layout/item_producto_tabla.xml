@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingVertical="14dp"
+        android:paddingHorizontal="16dp">
+
+        <!-- Info Producto (Nombre y Categoría) -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.2"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Producto Nombre"
+                android:textColor="#111827"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCategoria"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Categoría"
+                android:textColor="#6B7280"
+                android:textSize="12sp"
+                android:layout_marginTop="2dp" />
+        </LinearLayout>
+
+        <!-- Botón Ver (Opcional, similar a la imagen) -->
+        <TextView
+            android:id="@+id/btnVer"
+            android:layout_width="40dp"
+            android:layout_height="26dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/bg_talla"
+            android:gravity="center"
+            android:text="Ver"
+            android:textColor="#374151"
+            android:textSize="11sp"
+            android:visibility="visible" />
+
+        <!-- Stock (Chip verde) -->
+        <TextView
+            android:id="@+id/tvStock"
+            android:layout_width="32dp"
+            android:layout_height="26dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/bg_status_paid"
+            android:backgroundTint="#DCFCE7"
+            android:gravity="center"
+            android:text="25"
+            android:textColor="#166534"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <!-- Costo -->
+        <TextView
+            android:id="@+id/tvCosto"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="$40.000"
+            android:textColor="#374151"
+            android:textSize="13sp" />
+
+        <!-- Precio -->
+        <TextView
+            android:id="@+id/tvPrecio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="$80.000"
+            android:textColor="#111827"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <!-- Ganancia -->
+        <TextView
+            android:id="@+id/tvGanancia"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="$40.000"
+            android:textColor="#374151"
+            android:textSize="13sp" />
+
+        <!-- Botón Acción (Stock/Eliminar) -->
+        <ImageButton
+            android:id="@+id/btnDelete"
+            android:layout_width="36dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_button_dark"
+            android:backgroundTint="#1F2937"
+            android:padding="8dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_delete"
+            app:tint="#FFFFFF" />
+
+        <!-- Botón Editar (Pequeño al lado) -->
+        <ImageButton
+            android:id="@+id/btnEdit"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="4dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_edit"
+            app:tint="#3B82F6" />
+
+    </LinearLayout>
+
+    <!-- Línea divisora sutil entre filas -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#F3F4F6" />
+
+</LinearLayout>

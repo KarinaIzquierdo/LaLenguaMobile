@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:gravity="center_vertical"
+    android:background="?attr/selectableItemBackground">
+
+    <!-- Categoría -->
+    <TextView
+        android:id="@+id/tvCategoria"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Caballero"
+        android:textSize="12sp"
+        android:textColor="#4B5563"
+        android:background="@drawable/bg_category_chip"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="4dp"
+        android:gravity="center" />
+
+    <!-- Nombre -->
+    <TextView
+        android:id="@+id/tvNombre"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.5"
+        android:text="Cool"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:textColor="#1F2937"
+        android:layout_marginStart="8dp" />
+
+    <!-- Variaciones (Tallas) -->
+    <LinearLayout
+        android:id="@+id/layoutVariaciones"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginStart="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Negro"
+            android:textSize="11sp"
+            android:textColor="#374151"
+            android:drawableStart="@drawable/ic_circle_black"
+            android:drawablePadding="4dp"
+            android:gravity="center_vertical" />
+
+        <TextView
+            android:id="@+id/tvTallas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="T21 (5)\nT22 (5)\nT23 (5)\nT24 (5)\nT25 (5)\nT26 (5)"
+            android:textSize="10sp"
+            android:textColor="#6B7280"
+            android:lineSpacingExtra="2dp" />
+    </LinearLayout>
+
+    <!-- Stock -->
+    <TextView
+        android:id="@+id/tvStock"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.8"
+        android:text="25"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:textColor="#10B981"
+        android:gravity="center"
+        android:background="@drawable/bg_stock_chip"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="4dp"
+        android:layout_marginStart="8dp" />
+
+    <!-- Costo -->
+    <TextView
+        android:id="@+id/tvCosto"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="$40.000"
+        android:textSize="12sp"
+        android:textColor="#4B5563"
+        android:gravity="end"
+        android:layout_marginStart="8dp" />
+
+    <!-- Precio -->
+    <TextView
+        android:id="@+id/tvPrecio"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="$80.000"
+        android:textSize="12sp"
+        android:textColor="#4B5563"
+        android:gravity="end"
+        android:layout_marginStart="8dp" />
+
+    <!-- Ganancia -->
+    <TextView
+        android:id="@+id/tvGanancia"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="$40.000"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:textColor="#10B981"
+        android:gravity="end"
+        android:layout_marginStart="8dp" />
+
+    <!-- Acciones -->
+    <Button
+        android:id="@+id/btnStock"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:layout_weight="0.8"
+        android:text="Stock"
+        android:textSize="10sp"
+        android:background="@drawable/bg_button_stock"
+        android:textColor="@android:color/white"
+        android:layout_marginStart="8dp"
+        android:padding="0dp" />
+
+</LinearLayout>
