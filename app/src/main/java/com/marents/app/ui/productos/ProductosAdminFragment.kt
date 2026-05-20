@@ -39,7 +39,11 @@ class ProductosAdminFragment : Fragment() {
         setupSpinners()
         setupClickListeners()
         observeViewModel()
+    }
 
+    override fun onResume() {
+        super.onResume()
+        // Forzar recarga de productos al volver a la pantalla o entrar por primera vez
         viewModel.cargarProductos()
     }
 
@@ -68,7 +72,7 @@ class ProductosAdminFragment : Fragment() {
 
     private fun setupSpinners() {
         // Spinner de categorías
-        val categorias = arrayOf("Todas las categorías", "Caballero", "Dama", "Niño", "Deportivo")
+        val categorias = arrayOf("Todas las categorías", "Hombre", "Mujer", "Niño", "Pisa huevos")
         val categoriaAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, categorias)
         categoriaAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerCategorias.adapter = categoriaAdapter
@@ -88,6 +92,14 @@ class ProductosAdminFragment : Fragment() {
     }
 
     private fun setupClickListeners() {
+        binding.etBuscar.addTextChangedListener(object : android.text.TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                viewModel.buscarProductos(s.toString())
+            }
+            override fun afterTextChanged(s: android.text.Editable?) {}
+        })
+
         binding.btnBack.setOnClickListener {
             requireActivity().onBackPressed()
         }

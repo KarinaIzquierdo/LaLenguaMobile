@@ -9,6 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.marents.app.Navigator
 import com.marents.app.databinding.FragmentCategoriesBinding
+import com.marents.app.CategoriaImages
+import coil.load
+import coil.transform.CircleCropTransformation
 
 /**
  * Fragment de Selección de Categorías
@@ -33,7 +36,39 @@ class CategoriasFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        cargarImagenes()
         setupClickListeners()
+    }
+
+    private fun cargarImagenes() {
+        binding.ivMujer.load(CategoriaImages.MUJER) {
+            crossfade(true)
+            placeholder(android.R.drawable.progress_indeterminate_horizontal)
+        }
+        binding.ivHombre.load(CategoriaImages.HOMBRE) {
+            crossfade(true)
+            placeholder(android.R.drawable.progress_indeterminate_horizontal)
+        }
+        
+        // Uso de links directos para evitar errores de compilación con archivos locales
+        binding.ivNinos.load(CategoriaImages.NINOS) {
+            crossfade(true)
+            transformations(CircleCropTransformation())
+        }
+        
+        binding.ivPisahuevos.load(CategoriaImages.PISAHUEVOS) {
+            crossfade(true)
+            transformations(CircleCropTransformation())
+        }
+        
+        binding.ivPersonalizados.load(CategoriaImages.PERSONALIZADOS) {
+            crossfade(true)
+            transformations(CircleCropTransformation())
+        }
+        
+        binding.ivOutlet.load(CategoriaImages.OUTLET) {
+            crossfade(true)
+        }
     }
 
     /**
@@ -45,24 +80,34 @@ class CategoriasFragment : Fragment() {
             parentFragmentManager.popBackStack(null, androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE)
         }
 
-        binding.btnDama.setOnClickListener {
-            // Navegar a la pantalla de productos de Dama
+        binding.btnMujer.setOnClickListener {
+            // Navegar a la pantalla de productos de Mujer (Dama en BD)
             (activity as? Navigator.Provider)?.getNavigator()?.navigateToProductosCategoria("Dama")
         }
 
-        binding.btnCaballero.setOnClickListener {
-            // Navegar a la pantalla de productos de Caballero
+        binding.btnHombre.setOnClickListener {
+            // Navegar a la pantalla de productos de Hombre (Caballero en BD)
             (activity as? Navigator.Provider)?.getNavigator()?.navigateToProductosCategoria("Caballero")
         }
 
         binding.btnNinos.setOnClickListener {
-            // Navegar a la pantalla de productos de Niños
-            (activity as? Navigator.Provider)?.getNavigator()?.navigateToProductosCategoria("Niños")
+            // Navegar a la pantalla de productos de Niños (Niño en BD)
+            (activity as? Navigator.Provider)?.getNavigator()?.navigateToProductosCategoria("Niño")
+        }
+
+        binding.btnPisahuevos.setOnClickListener {
+            // Navegar a la pantalla de productos de Pisa huevos (Ortografía correcta para el título)
+            (activity as? Navigator.Provider)?.getNavigator()?.navigateToProductosCategoria("Pisa huevos")
         }
 
         binding.btnPersonalizados.setOnClickListener {
             // Navegar a la pantalla de Personalización
             (activity as? Navigator.Provider)?.getNavigator()?.navigateToPersonalizados()
+        }
+
+        binding.btnOutlet.setOnClickListener {
+            // Navegar a la pantalla de Outlet (podemos usar una categoría específica o filtro)
+            (activity as? Navigator.Provider)?.getNavigator()?.navigateToProductosCategoria("Outlet")
         }
     }
 

@@ -61,7 +61,7 @@ class CrearProductoFragment : Fragment() {
     }
 
     private fun setupSpinners() {
-        val categorias = arrayOf("Dama", "Caballero", "Niño")
+        val categorias = arrayOf("Hombre", "Mujer", "Niño", "Pisa huevos")
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, categorias)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerCategoria.adapter = adapter
@@ -73,9 +73,7 @@ class CrearProductoFragment : Fragment() {
         }
 
         binding.btnSelectImage.setOnClickListener {
-            val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
-            intent.addCategory(Intent.CATEGORY_OPENABLE)
-            intent.type = "image/*"
+            val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             selectImageLauncher.launch(intent)
         }
 

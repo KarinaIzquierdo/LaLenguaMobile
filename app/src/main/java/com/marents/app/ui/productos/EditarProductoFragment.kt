@@ -69,7 +69,7 @@ class EditarProductoFragment : Fragment() {
             
             // Seleccionar categoría
             val categoriaNombre = producto.modelo?.categoria?.nombre ?: ""
-            val categorias = arrayOf("Seleccionar categoría", "Dama", "Caballero", "Niños")
+            val categorias = arrayOf("Seleccionar categoría", "Hombre", "Mujer", "Niño", "Pisa huevos")
             val index = categorias.indexOfFirst { it.equals(categoriaNombre, ignoreCase = true) }
             if (index != -1) binding.spinnerCategoria.setSelection(index)
             
@@ -82,7 +82,7 @@ class EditarProductoFragment : Fragment() {
     }
 
     private fun setupSpinners() {
-        val categorias = arrayOf("Seleccionar categoría", "Dama", "Caballero", "Niños")
+        val categorias = arrayOf("Seleccionar categoría", "Hombre", "Mujer", "Niño", "Pisa huevos")
         val categoriaAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, categorias)
         categoriaAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerCategoria.adapter = categoriaAdapter
@@ -131,9 +131,10 @@ class EditarProductoFragment : Fragment() {
         lifecycleScope.launch {
             try {
                 val categoriaId = when (categoria) {
-                    "Caballero" -> 1
-                    "Dama" -> 2
-                    "Niños" -> 3
+                    "Hombre" -> 1
+                    "Mujer" -> 2
+                    "Niño" -> 3
+                    "Pisa huevos" -> 4
                     else -> 1
                 }
 

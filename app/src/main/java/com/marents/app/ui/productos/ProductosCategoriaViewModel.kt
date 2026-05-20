@@ -40,16 +40,34 @@ class ProductosCategoriaViewModel : ViewModel() {
             _error.value = null
 
             try {
+                // Obtenemos todos los productos y filtramos localmente para evitar problemas de URL
                 val response = withContext(Dispatchers.IO) {
-                    RetrofitClient.apiService.getProductosPorCategoria(categoria).execute()
+                    RetrofitClient.apiService.getProductos().execute()
                 }
 
                 if (response.isSuccessful) {
-                    val productosApi = response.body() ?: emptyList()
-                    Log.d("ProductosCategoria", "Productos recibidos: ${productosApi.size}")
+                    val todosLosProductos = response.body() ?: emptyList()
+                    
+                    // Mapeo de nombres para el filtro local
+                    val categoriaFiltro = when(categoria) {
+                        "Mujer" -> "Dama"
+                        "Hombre" -> "Caballero"
+                        "Pisa huevos", "Pisahuevos" -> "Pisa huevos"
+                        "Niños" -> "Niño"
+                        else -> categoria
+                    }
 
-                    // Transformar productos de API a formato UI
-                    val productosUi = productosApi.map { producto ->
+                    // Filtrar localmente por el nombre de la categoría
+                    val productosFiltrados = todosLosProductos.filter { producto ->
+                        val nombreCat = producto.modelo?.categoria?.nombre ?: ""
+                        nombreCat.equals(categoriaFiltro, ignoreCase = true) || 
+                        nombreCat.equals(categoria, ignoreCase = true)
+                    }
+
+                    Log.d("ProductosCategoria", "Total: ${todosLosProductos.size}, Filtrados para $categoriaFiltro: ${productosFiltrados.size}")
+
+                    // Transformar a formato UI
+                    val productosUi = productosFiltrados.map { producto ->
                         val variaciones = producto.variaciones ?: emptyList()
                         val primeraVariacion = variaciones.firstOrNull()
 
