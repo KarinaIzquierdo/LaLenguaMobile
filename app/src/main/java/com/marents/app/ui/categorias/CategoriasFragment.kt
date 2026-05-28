@@ -15,7 +15,7 @@ import coil.transform.CircleCropTransformation
 
 /**
  * Fragment de Selección de Categorías
- * Muestra: Dama, Caballero, Niña, Niño distribuidas uniformemente
+ * Muestra: Mujer, Hombre, Niña, Niño distribuidas uniformemente
  * Navega a Home al seleccionar una categoría
  */
 class CategoriasFragment : Fragment() {
@@ -81,13 +81,13 @@ class CategoriasFragment : Fragment() {
         }
 
         binding.btnMujer.setOnClickListener {
-            // Navegar a la pantalla de productos de Mujer (Dama en BD)
-            (activity as? Navigator.Provider)?.getNavigator()?.navigateToProductosCategoria("Dama")
+            // Navegar a la pantalla de productos de Mujer
+            (activity as? Navigator.Provider)?.getNavigator()?.navigateToProductosCategoria("Mujer")
         }
 
         binding.btnHombre.setOnClickListener {
-            // Navegar a la pantalla de productos de Hombre (Caballero en BD)
-            (activity as? Navigator.Provider)?.getNavigator()?.navigateToProductosCategoria("Caballero")
+            // Navegar a la pantalla de productos de Hombre
+            (activity as? Navigator.Provider)?.getNavigator()?.navigateToProductosCategoria("Hombre")
         }
 
         binding.btnNinos.setOnClickListener {

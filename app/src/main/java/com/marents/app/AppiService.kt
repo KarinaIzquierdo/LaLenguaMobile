@@ -1,5 +1,6 @@
     package com.marents.app
 
+import com.marents.app.network.dto.AdminStatsResponse
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -62,6 +63,23 @@ interface ApiService {
     @PUT("productos/{id}")
     fun actualizarProducto(@Path("id") id: Int, @FieldMap params: Map<String, String>): Call<Map<String, Any>>
 
+    @Multipart
+    @POST("productos/{id}")
+    fun actualizarProductoConImagen(
+        @Path("id") id: Int,
+        @Part("modelo_nombre") nombre: RequestBody,
+        @Part imagen: MultipartBody.Part
+    ): Call<Map<String, Any>>
+
+    @FormUrlEncoded
+    @POST("productos/stock")
+    fun agregarStock(
+        @Field("modelo_id") modeloId: Int,
+        @Field("color_primario") color: String,
+        @Field("cantidad") cantidad: Int,
+        @Field("tallas[]") tallas: List<Int>
+    ): Call<Map<String, Any>>
+
     @DELETE("productos/{id}")
     fun eliminarProducto(@Path("id") id: Int): Call<Void>
 
@@ -108,18 +126,3 @@ interface ApiService {
     @GET("admin/stats")
     fun getAdminStats(): Call<AdminStatsResponse>
 }
-
-data class AdminStatsResponse(
-    val pendientes: Int,
-    val ventas: Int,
-    val stock_bajo: Int,
-    val completados: Int,
-    val pedidos_recientes: List<PedidoResumenResponse>? = null
-)
-
-data class PedidoResumenResponse(
-    val id: Int,
-    val cliente: String,
-    val total: Double,
-    val estado: String
-)

@@ -71,7 +71,7 @@ class CrearProductoDialogFragment : DialogFragment() {
             
             // Seleccionar categoría
             val categoriaNombre = producto.modelo?.categoria?.nombre ?: ""
-            val categorias = arrayOf("Seleccionar categoría", "Dama", "Caballero", "Niños")
+            val categorias = arrayOf("Seleccionar categoría", "Mujer", "Hombre", "Niños")
             val index = categorias.indexOfFirst { it.equals(categoriaNombre, ignoreCase = true) }
             if (index != -1) binding.spinnerCategoria.setSelection(index)
             
@@ -81,8 +81,8 @@ class CrearProductoDialogFragment : DialogFragment() {
     }
 
     private fun setupSpinners() {
-        // Categorías: Dama, Caballero, Niños
-        val categorias = arrayOf("Seleccionar categoría", "Dama", "Caballero", "Niños")
+        // Categorías: Mujer, Hombre, Niños
+        val categorias = arrayOf("Seleccionar categoría", "Mujer", "Hombre", "Niños")
         val categoriaAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, categorias)
         categoriaAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerCategoria.adapter = categoriaAdapter
@@ -153,8 +153,8 @@ class CrearProductoDialogFragment : DialogFragment() {
         lifecycleScope.launch {
             try {
                 val categoriaId = when (categoria) {
-                    "Caballero" -> 1
-                    "Dama" -> 2
+                    "Hombre" -> 1
+                    "Mujer" -> 2
                     "Niños" -> 3
                     else -> 1
                 }

@@ -1,6 +1,5 @@
 package com.marents.app.ui.admin
 
-import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +10,9 @@ import androidx.fragment.app.viewModels
 import com.marents.app.AppRoutes
 import com.marents.app.MainActivity
 import com.marents.app.databinding.FragmentAdminBinding
+import com.marents.app.ui.admin.model.AdminStats
+import com.marents.app.ui.admin.model.PedidoReciente
+import com.marents.app.ui.admin.model.ProductoVendido
 
 class AdminFragment : Fragment() {
 
@@ -41,30 +43,12 @@ class AdminFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        viewModel.stats.observe(viewLifecycleOwner) { stats ->
-            stats?.let {
-                actualizarMetricas(it)
-            }
-        }
+        viewModel.uiState.observe(viewLifecycleOwner) { state ->
+            actualizarMetricas(state.stats)
+            mostrarProductosVendidos(state.productosVendidos)
+            mostrarPedidosRecientes(state.pedidosRecientes)
 
-        viewModel.productosVendidos.observe(viewLifecycleOwner) { productos ->
-            productos?.let {
-                mostrarProductosVendidos(it)
-            }
-        }
-
-        viewModel.pedidosRecientes.observe(viewLifecycleOwner) { pedidos ->
-            pedidos?.let {
-                mostrarPedidosRecientes(it)
-            }
-        }
-
-        viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
-            // Mostrar/ocultar indicador de carga si es necesario
-        }
-
-        viewModel.error.observe(viewLifecycleOwner) { error ->
-            error?.let {
+            state.error?.let {
                 Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
                 viewModel.limpiarError()
             }
@@ -254,53 +238,19 @@ class AdminFragment : Fragment() {
     private fun openFloatingMenu() {
         isMenuOpen = true
         binding.floatingMenu.visibility = View.VISIBLE
-        
-        // Animar FAB rotación
-        val rotateFab = ObjectAnimator.ofFloat(binding.fabMenu, "rotation", 0f, 45f)
-        rotateFab.duration = 300
-        rotateFab.start()
-        
-        // Animar aparición del menú
-        val fadeIn = ObjectAnimator.ofFloat(binding.floatingMenu, "alpha", 0f, 1f)
-        fadeIn.duration = 300
-        fadeIn.start()
-        
-        // Animar cada opción del menú
-        val slideInUsuarios = ObjectAnimator.ofFloat(binding.fabUsuarios, "translationY", 100f, 0f)
-        slideInUsuarios.duration = 300
-        slideInUsuarios.startDelay = 100
-        slideInUsuarios.start()
-        
-        val slideInProductos = ObjectAnimator.ofFloat(binding.fabProductos, "translationY", 100f, 0f)
-        slideInProductos.duration = 300
-        slideInProductos.startDelay = 200
-        slideInProductos.start()
+        binding.fabMenu.rotation = 45f
+        binding.floatingMenu.alpha = 1f
+        binding.fabUsuarios.translationY = 0f
+        binding.fabProductos.translationY = 0f
     }
 
     private fun closeFloatingMenu() {
         if (!isMenuOpen) return
         
         isMenuOpen = false
-        
-        // Animar FAB rotación inversa
-        val rotateFab = ObjectAnimator.ofFloat(binding.fabMenu, "rotation", 45f, 0f)
-        rotateFab.duration = 300
-        rotateFab.start()
-        
-        // Animar desaparición del menú
-        val fadeOut = ObjectAnimator.ofFloat(binding.floatingMenu, "alpha", 1f, 0f)
-        fadeOut.duration = 300
-        fadeOut.start()
-        
-        // Ocultar después de la animación
-        fadeOut.addListener(object : android.animation.AnimatorListenerAdapter() {
-            override fun onAnimationEnd(animation: android.animation.Animator) {
-                // Verificar que el binding no sea nulo antes de acceder
-                _binding?.let { binding ->
-                    binding.floatingMenu.visibility = View.GONE
-                }
-            }
-        })
+        binding.fabMenu.rotation = 0f
+        binding.floatingMenu.alpha = 0f
+        binding.floatingMenu.visibility = View.GONE
     }
 
     override fun onDestroyView() {

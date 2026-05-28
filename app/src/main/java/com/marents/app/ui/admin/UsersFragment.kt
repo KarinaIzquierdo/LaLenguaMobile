@@ -1,5 +1,6 @@
 package com.marents.app.ui.admin
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -72,7 +73,17 @@ class   UsersFragment : Fragment() {
         try {
             // Botón atrás
             binding.btnBack.setOnClickListener {
-                (activity as? MainActivity)?.onBackPressed()
+                requireActivity().onBackPressedDispatcher.onBackPressed()
+            }
+
+            binding.btnLogout.setOnClickListener {
+                requireActivity()
+                    .getSharedPreferences("marents_prefs", Context.MODE_PRIVATE)
+                    .edit()
+                    .clear()
+                    .apply()
+                Toast.makeText(requireContext(), "Sesión cerrada", Toast.LENGTH_SHORT).show()
+                (activity as? MainActivity)?.navigateToLoginClearingBackStack()
             }
 
             // Botón agregar usuario

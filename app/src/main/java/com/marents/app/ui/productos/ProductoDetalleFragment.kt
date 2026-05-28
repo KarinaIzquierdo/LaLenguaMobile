@@ -114,10 +114,10 @@ class ProductoDetalleFragment : Fragment() {
                     (20..34).toList() // Tallas niños
                 }
                 categoriaLower.contains("dama") || categoriaLower.contains("mujer") -> {
-                    (35..40).toList() // Tallas dama
+                    (35..40).toList() // Tallas mujer
                 }
                 categoriaLower.contains("caballero") || categoriaLower.contains("hombre") -> {
-                    (38..45).toList() // Tallas caballero
+                    (38..45).toList() // Tallas hombre
                 }
                 else -> {
                     (35..45).toList() // Por defecto, todas las tallas

@@ -1,6 +1,7 @@
 package com.marents.app.ui.productos
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -35,6 +36,7 @@ class GestionStockGlobalActivity : AppCompatActivity() {
         setupTallasGrid()
         setupBotones()
         cargarCategorias()
+        cargarTodosLosModelos()
     }
 
     private fun setupToolbar() {
@@ -44,16 +46,6 @@ class GestionStockGlobalActivity : AppCompatActivity() {
     }
 
     private fun setupSpinners() {
-        binding.spinnerCategoria.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                if (position > 0 && categorias.isNotEmpty()) {
-                    val categoriaId = categorias[position - 1].id
-                    cargarModelosPorCategoria(categoriaId)
-                }
-            }
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-        }
-
         val colorAdapter = ArrayAdapter(this, R.layout.item_spinner, colores)
         colorAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerColor.adapter = colorAdapter
@@ -156,44 +148,37 @@ class GestionStockGlobalActivity : AppCompatActivity() {
                 binding.spinnerCategoria.adapter = adapter
 
             } catch (e: Exception) {
-                Toast.makeText(this@GestionStockGlobalActivity, "Error cargando categorías", Toast.LENGTH_SHORT).show()
+                Log.e("GestionStock", "Error cargando categorías: ${e.message}", e)
+                Toast.makeText(this@GestionStockGlobalActivity, "Error cargando categorías: ${e.message}", Toast.LENGTH_LONG).show()
             }
         }
     }
 
-    private fun cargarModelosPorCategoria(categoriaId: Int?) {
+    private fun cargarTodosLosModelos() {
         lifecycleScope.launch {
             try {
                 val response = withContext(Dispatchers.IO) {
                     RetrofitClient.apiService.getModelos().await()
                 }
-
-                modelos = response.filter { it.categoriaId == categoriaId }
-
-                val nombres = mutableListOf("Seleccionar modelo...")
-                nombres.addAll(modelos.map { it.nombre ?: "" })
-
-                val adapter = ArrayAdapter(this@GestionStockGlobalActivity, R.layout.item_spinner, nombres)
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                binding.spinnerModelo.adapter = adapter
-
+                modelos = response
             } catch (e: Exception) {
-                Toast.makeText(this@GestionStockGlobalActivity, "Error cargando modelos", Toast.LENGTH_SHORT).show()
+                Log.e("GestionStock", "Error cargando modelos: ${e.message}", e)
+                Toast.makeText(this@GestionStockGlobalActivity, "Error cargando modelos: ${e.message}", Toast.LENGTH_LONG).show()
             }
         }
     }
 
     private fun guardarStock() {
         val cantidad = binding.etCantidad.text.toString().toIntOrNull()
-        val modeloIndex = binding.spinnerModelo.selectedItemPosition
+        val modeloNombre = binding.etModelo.text.toString().trim()
 
         if (cantidad == null || cantidad <= 0) {
             Toast.makeText(this, "Ingrese una cantidad válida", Toast.LENGTH_SHORT).show()
             return
         }
 
-        if (modeloIndex <= 0 || modelos.isEmpty()) {
-            Toast.makeText(this, "Seleccione un modelo", Toast.LENGTH_SHORT).show()
+        if (modeloNombre.isEmpty()) {
+            Toast.makeText(this, "Escriba el nombre del modelo", Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -202,15 +187,47 @@ class GestionStockGlobalActivity : AppCompatActivity() {
             return
         }
 
-        val modelo = modelos.getOrNull(modeloIndex - 1)
-        val color = binding.spinnerColor.selectedItem?.toString()
+        val modelo = modelos.find { it.nombre?.equals(modeloNombre, ignoreCase = true) == true }
+        if (modelo == null) {
+            Toast.makeText(this, "Modelo '$modeloNombre' no encontrado. Verifique el nombre.", Toast.LENGTH_LONG).show()
+            return
+        }
 
-        Toast.makeText(
-            this,
-            "Agregando $cantidad unidades de ${modelo?.nombre} ($color) a ${tallasSeleccionadas.size} tallas",
-            Toast.LENGTH_LONG
-        ).show()
+        val color = binding.spinnerColor.selectedItem?.toString() ?: "Negro"
+        val modeloId = modelo.id ?: return
 
-        finish()
+        lifecycleScope.launch {
+            try {
+                val response = withContext(Dispatchers.IO) {
+                    RetrofitClient.apiService.agregarStock(
+                        modeloId = modeloId,
+                        color = color,
+                        cantidad = cantidad,
+                        tallas = tallasSeleccionadas.toList()
+                    ).execute()
+                }
+
+                if (response.isSuccessful) {
+                    Toast.makeText(
+                        this@GestionStockGlobalActivity,
+                        "Stock agregado correctamente a ${tallasSeleccionadas.size} tallas",
+                        Toast.LENGTH_LONG
+                    ).show()
+                    finish()
+                } else {
+                    Toast.makeText(
+                        this@GestionStockGlobalActivity,
+                        "Error del servidor: ${response.code()}",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            } catch (e: Exception) {
+                Toast.makeText(
+                    this@GestionStockGlobalActivity,
+                    "Error de conexión: ${e.message}",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
     }
 }

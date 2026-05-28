@@ -32,13 +32,13 @@ class CategoriasViewModel : ViewModel() {
         val listaCategorias = listOf(
             CategoriaItem(
                 id = 1,
-                nombre = "Dama",
+                nombre = "Mujer",
                 iconoResId = R.mipmap.ic_launcher, // TODO: Reemplazar con icono real
                 colorFondo = "#E8F5E9" // Verde muy claro
             ),
             CategoriaItem(
                 id = 2,
-                nombre = "Caballero",
+                nombre = "Hombre",
                 iconoResId = R.mipmap.ic_launcher,
                 colorFondo = "#E3F2FD" // Azul muy claro
             ),
@@ -53,6 +53,12 @@ class CategoriasViewModel : ViewModel() {
                 nombre = "Niño",
                 iconoResId = R.mipmap.ic_launcher,
                 colorFondo = "#FFF3E0" // Naranja muy claro
+            ),
+            CategoriaItem(
+                id = 5,
+                nombre = "Pisa huevos",
+                iconoResId = R.mipmap.ic_launcher,
+                colorFondo = "#F3E5F5" // Morado muy claro
             )
         )
         _categorias.value = listaCategorias

@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import android.content.Context
 import com.marents.app.MainActivity
 import com.marents.app.R
 import com.marents.app.databinding.FragmentProductosAdminBinding
@@ -39,11 +40,14 @@ class ProductosAdminFragment : Fragment() {
         setupSpinners()
         setupClickListeners()
         observeViewModel()
+
+        // Cargar productos al instante al entrar a la pantalla
+        viewModel.cargarProductos()
     }
 
     override fun onResume() {
         super.onResume()
-        // Forzar recarga de productos al volver a la pantalla o entrar por primera vez
+        // Recargar productos al volver de otra pantalla (ej: Gestión de existencias)
         viewModel.cargarProductos()
     }
 
@@ -60,6 +64,35 @@ class ProductosAdminFragment : Fragment() {
             onDeleteClick = { producto ->
                 // Confirmar eliminación
                 mostrarConfirmacionEliminar(producto)
+            },
+            onVerClick = { producto ->
+                val variaciones = producto.variaciones ?: emptyList()
+                val precioPromedio = variaciones.mapNotNull { it.precio?.toDoubleOrNull() }.average().takeIf { !it.isNaN() } ?: 0.0
+                val formatter = java.text.DecimalFormat("$ #,###")
+                val precioTexto = formatter.format(precioPromedio).replace(",", ".")
+
+                val tallas = if (!producto.tallas.isNullOrEmpty()) {
+                    ArrayList(producto.tallas)
+                } else {
+                    ArrayList(variaciones.mapNotNull { it.talla?.numero?.toString() }.distinct())
+                }
+
+                val bundle = Bundle().apply {
+                    putInt("productoId", producto.id ?: 0)
+                    putString("productoNombre", producto.modelo?.nombre ?: "")
+                    putString("productoPrecio", precioTexto)
+                    putString("productoImagen", producto.imagen ?: "")
+                    putString("productoCategoria", producto.modelo?.categoria?.nombre ?: "")
+                    putStringArrayList("productoTallas", tallas)
+                }
+
+                val detalleFragment = ProductoDetalleFragment().apply {
+                    arguments = bundle
+                }
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.fragment_container, detalleFragment)
+                    .addToBackStack(null)
+                    .commit()
             }
         )
 
@@ -100,13 +133,21 @@ class ProductosAdminFragment : Fragment() {
             override fun afterTextChanged(s: android.text.Editable?) {}
         })
 
-        binding.btnBack.setOnClickListener {
-            requireActivity().onBackPressed()
+        binding.btnMenu.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, com.marents.app.ui.admin.AdminFragment())
+                .addToBackStack(null)
+                .commit()
         }
 
-        binding.btnHome.setOnClickListener {
-            // Regresar al inicio del nav_host o actividad principal
-            requireActivity().finish()
+        binding.tvSalir.setOnClickListener {
+            requireActivity()
+                .getSharedPreferences("marents_prefs", Context.MODE_PRIVATE)
+                .edit()
+                .clear()
+                .apply()
+            Toast.makeText(requireContext(), "Sesión cerrada", Toast.LENGTH_SHORT).show()
+            (activity as? MainActivity)?.navigateToLoginClearingBackStack()
         }
 
         binding.btnGestionExistencias.setOnClickListener {
@@ -139,6 +180,10 @@ class ProductosAdminFragment : Fragment() {
             adapter.submitList(productos)
             binding.layoutEmpty.visibility = if (productos.isEmpty()) View.VISIBLE else View.GONE
             binding.recyclerViewProductos.visibility = if (productos.isEmpty()) View.GONE else View.VISIBLE
+            // Forzar re-layout para que RecyclerView mida correctamente sus items
+            binding.recyclerViewProductos.post {
+                binding.recyclerViewProductos.requestLayout()
+            }
         }
 
         viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->

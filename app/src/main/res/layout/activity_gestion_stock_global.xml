@@ -92,11 +92,15 @@
                     android:textStyle="bold"
                     android:textColor="#374151" />
 
-                <Spinner
-                    android:id="@+id/spinnerModelo"
+                <EditText
+                    android:id="@+id/etModelo"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:background="@drawable/bg_spinner"
+                    android:hint="Escriba el nombre del modelo"
+                    android:paddingHorizontal="16dp"
+                    android:textSize="14sp"
+                    android:textColor="#374151"
                     android:layout_marginTop="8dp" />
             </LinearLayout>
 

@@ -14,7 +14,7 @@ import com.marents.app.CategoriaItem
 import com.marents.app.R
 
 /**
- * Adapter para mostrar categorías (Dama, Caballero, Niña, Niño)
+ * Adapter para mostrar categorías (Mujer, Hombre, Niña, Niño)
  * Usa ListAdapter con DiffUtil para actualizaciones eficientes
  */
 class CategoriasAdapter(

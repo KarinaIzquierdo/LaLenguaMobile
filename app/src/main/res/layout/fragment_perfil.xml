@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8FAFC">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mi Perfil"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:textColor="#111827"
+            android:layout_marginBottom="32dp" />
+
+        <!-- SECCIÓN: DATOS PERSONALES -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="3dp"
+            android:layout_marginBottom="32dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="INFORMACIÓN PERSONAL"
+                    android:textStyle="bold"
+                    android:textColor="#9CA3AF"
+                    android:textSize="11sp"
+                    android:letterSpacing="0.1"
+                    android:layout_marginBottom="24dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre completo"
+                    android:textSize="13sp"
+                    android:textColor="#4B5563"
+                    android:layout_marginBottom="8dp" />
+
+                <EditText
+                    android:id="@+id/etNombreUsuario"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:background="@drawable/bg_profile_input"
+                    android:paddingHorizontal="16dp"
+                    android:textSize="15sp"
+                    android:textColor="#1F2937"
+                    android:inputType="textPersonName"
+                    android:text="Usuario Marents"
+                    android:layout_marginBottom="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Correo electrónico"
+                    android:textSize="13sp"
+                    android:textColor="#4B5563"
+                    android:layout_marginBottom="8dp" />
+
+                <EditText
+                    android:id="@+id/etEmailUsuario"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:background="@drawable/bg_profile_input"
+                    android:paddingHorizontal="16dp"
+                    android:textSize="15sp"
+                    android:textColor="#1F2937"
+                    android:inputType="textEmailAddress"
+                    android:text="contacto@calzadomarents.com"
+                    android:layout_marginBottom="32dp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnGuardarPerfil"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:text="Guardar Cambios"
+                    android:textColor="#000000"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:background="@drawable/bg_button_outline_white"
+                    android:textAllCaps="false"
+                    android:stateListAnimator="@null" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- SECCIÓN: REDES SOCIALES -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SÍGUENOS EN REDES"
+            android:textStyle="bold"
+            android:textColor="#9CA3AF"
+            android:textSize="11sp"
+            android:letterSpacing="0.1"
+            android:layout_marginBottom="24dp" />
+
+        <!-- INSTAGRAM -->
+        <LinearLayout
+            android:id="@+id/btnInstagram"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="24dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@mipmap/ic_launcher"
+                android:scaleType="centerInside" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Instagram: calzadomarents.tuestilo"
+                android:textSize="14sp"
+                android:textColor="#374151" />
+        </LinearLayout>
+
+        <!-- FACEBOOK -->
+        <LinearLayout
+            android:id="@+id/btnFacebook"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="24dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@mipmap/ic_launcher"
+                android:scaleType="centerInside" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="Facebook: calzadomarents.tuestilo"
+                android:textSize="14sp"
+                android:textColor="#374151" />
+        </LinearLayout>
+
+        <!-- TIKTOK -->
+        <LinearLayout
+            android:id="@+id/btnTikTok"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="32dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@mipmap/ic_launcher"
+                android:scaleType="centerInside" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="TikTok: @calzadomarents_7"
+                android:textSize="14sp"
+                android:textColor="#374151" />
+        </LinearLayout>
+
+        <!-- CERRAR SESIÓN -->
+        <Button
+            android:id="@+id/btnCerrarSesion"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:text="Cerrar Sesión"
+            android:textColor="#EF4444"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:textAllCaps="false"
+            android:layout_marginTop="16dp" />
+
+    </LinearLayout>
+</ScrollView>

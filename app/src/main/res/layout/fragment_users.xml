@@ -21,7 +21,7 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@android:drawable/ic_menu_sort_by_size"
+            android:src="@drawable/ic_arrow_back"
             app:tint="#111827" />
 
         <!-- Espaciador para empujar el perfil a la derecha -->

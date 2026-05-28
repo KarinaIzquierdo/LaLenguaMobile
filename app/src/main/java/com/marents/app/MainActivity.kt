@@ -126,5 +126,15 @@ class MainActivity : AppCompatActivity(), Navigator.Provider {
         }
     }
 
+    fun navigateToLoginClearingBackStack() {
+        supportFragmentManager.popBackStack(
+            null,
+            androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
+        )
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, LoginFragment())
+            .commit()
+    }
+
     override fun getNavigator(): Navigator = navigator
 }

@@ -54,7 +54,7 @@
             android:id="@+id/tvCategoria"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Caballero"
+            android:text="Hombre"
             android:textSize="14sp"
             android:textColor="#94A3B8"
             android:layout_marginBottom="20dp" />

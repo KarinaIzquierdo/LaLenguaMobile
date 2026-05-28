@@ -16,33 +16,65 @@
         android:background="#FFFFFF">
 
         <ImageButton
-            android:id="@+id/btnBack"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:id="@+id/btnMenu"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_arrow_back"
+            android:src="@drawable/ic_menu"
             app:tint="#111827" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="12dp"
             android:text="Gestión de productos"
             android:textColor="#111827"
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <ImageButton
-            android:id="@+id/btnHome"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_home"
-            app:tint="#111827" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@drawable/bg_circle_admin"
+                android:gravity="center"
+                android:text="A"
+                android:textColor="#4338CA"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Admin"
+                    android:textColor="#111827"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvSalir"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Salir"
+                    android:textColor="#EF4444"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -65,10 +97,10 @@
                     android:layout_height="50dp"
                     android:layout_weight="1"
                     android:text="Gestión existencias"
+                    android:textSize="14sp"
                     android:textAllCaps="false"
-                    android:backgroundTint="#3B82F6"
+                    android:background="@drawable/bg_button_primary"
                     android:textColor="#FFFFFF"
-                    app:cornerRadius="8dp"
                     android:layout_marginEnd="8dp" />
 
                 <Button
@@ -77,12 +109,10 @@
                     android:layout_height="50dp"
                     android:layout_weight="1"
                     android:text="+ Nuevo producto"
+                    android:textSize="14sp"
                     android:textAllCaps="false"
-                    android:backgroundTint="#FFFFFF"
-                    android:textColor="#3B82F6"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    app:strokeColor="#3B82F6"
-                    app:cornerRadius="8dp" />
+                    android:background="@drawable/bg_button_outline_blue"
+                    android:textColor="#3B82F6" />
             </LinearLayout>
 
             <!-- Card de Filtros -->
@@ -106,7 +136,7 @@
                         android:background="@drawable/bg_input_field"
                         android:hint="Buscar producto..."
                         android:paddingHorizontal="16dp"
-                        android:drawableStart="@drawable/ic_shoe_placeholder"
+                        android:drawableStart="@drawable/ic_search"
                         android:drawablePadding="12dp" />
 
                     <LinearLayout
@@ -224,6 +254,7 @@
                         android:id="@+id/recyclerViewProductos"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"
                         android:paddingBottom="8dp" />
 
                     <!-- Empty State -->
@@ -309,5 +340,5 @@
                 android:visibility="gone" />
 
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>

@@ -13,13 +13,14 @@ import com.marents.app.R
 
 class ProductosAdminAdapter(
     private val onEditClick: (Producto) -> Unit,
-    private val onDeleteClick: (Producto) -> Unit
+    private val onDeleteClick: (Producto) -> Unit,
+    private val onVerClick: (Producto) -> Unit
 ) : ListAdapter<Producto, ProductosAdminAdapter.ProductoViewHolder>(ProductoDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductoViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_producto_tabla, parent, false)
-        return ProductoViewHolder(view, onEditClick, onDeleteClick)
+        return ProductoViewHolder(view, onEditClick, onDeleteClick, onVerClick)
     }
 
     override fun onBindViewHolder(holder: ProductoViewHolder, position: Int) {
@@ -29,7 +30,8 @@ class ProductosAdminAdapter(
     class ProductoViewHolder(
         itemView: View,
         private val onEditClick: (Producto) -> Unit,
-        private val onDeleteClick: (Producto) -> Unit
+        private val onDeleteClick: (Producto) -> Unit,
+        private val onVerClick: (Producto) -> Unit
     ) : RecyclerView.ViewHolder(itemView) {
 
         private fun formatMoney(value: String): String {
@@ -62,13 +64,22 @@ class ProductosAdminAdapter(
         private val tvCosto: TextView = itemView.findViewById(R.id.tvCosto)
         private val tvPrecio: TextView = itemView.findViewById(R.id.tvPrecio)
         private val tvGanancia: TextView = itemView.findViewById(R.id.tvGanancia)
+        private val btnVer: View = itemView.findViewById(R.id.btnVer)
         private val btnEdit: View = itemView.findViewById(R.id.btnEdit)
         private val btnDelete: View = itemView.findViewById(R.id.btnDelete)
+
+        private fun mapCategoria(nombre: String?): String {
+            return when (nombre?.trim()) {
+                "Dama" -> "Mujer"
+                "Caballero" -> "Hombre"
+                else -> nombre ?: "General"
+            }
+        }
 
         fun bind(producto: Producto) {
             // Información básica
             tvNombre.text = producto.modelo?.nombre ?: "Sin nombre"
-            tvCategoria.text = producto.modelo?.categoria?.nombre ?: "General"
+            tvCategoria.text = mapCategoria(producto.modelo?.categoria?.nombre)
 
             // Variaciones para cálculos
             val variaciones = producto.variaciones ?: emptyList()
@@ -91,6 +102,7 @@ class ProductosAdminAdapter(
             tvGanancia.setTextColor(if (ganancia >= 0) 0xFF10B981.toInt() else 0xFFEF4444.toInt())
 
             // Acciones
+            btnVer.setOnClickListener { onVerClick(producto) }
             btnEdit.setOnClickListener { onEditClick(producto) }
             btnDelete.setOnClickListener { onDeleteClick(producto) }
         }
