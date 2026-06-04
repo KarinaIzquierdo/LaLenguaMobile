@@ -66,6 +66,14 @@ interface ApiService {
     @PUT("productos/{id}")
     fun actualizarProducto(@Path("id") id: Int, @FieldMap params: Map<String, String>): Call<Map<String, Any>>
 
+    @Multipart
+    @POST("productos/{id}")
+    fun actualizarProductoConImagen(
+        @Path("id") id: Int,
+        @Part("modelo_nombre") nombre: RequestBody,
+        @Part imagen: MultipartBody.Part
+    ): Call<Map<String, Any>>
+
     @DELETE("productos/{id}")
     fun eliminarProducto(@Path("id") id: Int): Call<Void>
 
