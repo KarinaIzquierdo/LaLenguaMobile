@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0F172A"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- Header con botón volver -->
+        <ImageButton
+            android:id="@+id/btnVolver"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:tint="#FFFFFF"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Imagen del producto -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            android:layout_marginBottom="24dp">
+
+            <ImageView
+                android:id="@+id/ivProductoImagen"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:background="#F8FAFC"
+                android:src="@drawable/ic_shoe_placeholder" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- Info del producto -->
+        <TextView
+            android:id="@+id/tvNombreModelo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cool"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:id="@+id/tvCategoria"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Caballero"
+            android:textSize="14sp"
+            android:textColor="#94A3B8"
+            android:layout_marginBottom="20dp" />
+
+        <TextView
+            android:id="@+id/tvPrecio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$80.000"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Selector de Color -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Color"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="12dp" />
+
+        <LinearLayout
+            android:id="@+id/layoutColores"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="24dp">
+
+            <View
+                android:id="@+id/circleColorNegro"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@drawable/circle_color_selected"
+                android:tag="Negro" />
+        </LinearLayout>
+
+        <!-- Selector de Tallas -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Selecciona la talla"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="12dp" />
+
+        <LinearLayout
+            android:id="@+id/layoutTallas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Info de stock -->
+        <TextView
+            android:id="@+id/tvStockInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5 unidades disponibles"
+            android:textSize="13sp"
+            android:textColor="#10B981"
+            android:layout_marginBottom="12dp"
+            android:visibility="gone" />
+
+        <!-- Guía de tallas -->
+        <TextView
+            android:id="@+id/tvGuiaTallas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📏 Guía de tallas"
+            android:textSize="14sp"
+            android:textColor="#94A3B8"
+            android:background="@drawable/bg_outline_button"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Cantidad -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cantidad"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="8dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_quantity_selector"
+            android:padding="4dp"
+            android:layout_marginBottom="24dp">
+
+            <Button
+                android:id="@+id/btnMenos"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="-"
+                android:textSize="18sp"
+                android:textColor="#FFFFFF"
+                android:background="?attr/selectableItemBackground" />
+
+            <TextView
+                android:id="@+id/tvCantidad"
+                android:layout_width="48dp"
+                android:layout_height="40dp"
+                android:text="1"
+                android:textSize="16sp"
+                android:textColor="#FFFFFF"
+                android:gravity="center" />
+
+            <Button
+                android:id="@+id/btnMas"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:text="+"
+                android:textSize="18sp"
+                android:textColor="#FFFFFF"
+                android:background="?attr/selectableItemBackground" />
+        </LinearLayout>
+
+        <!-- Botón Agregar -->
+        <Button
+            android:id="@+id/btnAgregarBolsa"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="Agregar a la bolsa de compras"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:textAllCaps="false"
+            android:background="@drawable/bg_button_black"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+</ScrollView>

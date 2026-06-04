@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@android:color/white">
+
+    <!-- Header corregido -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="28dp">
+
+        <TextView
+            android:id="@+id/tvTituloDialog"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Crear producto"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#1F2937" />
+
+        <ImageButton
+            android:id="@+id/btnCerrar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:tint="#6B7280"
+            android:padding="8dp" />
+    </LinearLayout>
+
+    <!-- Nombre del modelo -->
+    <EditText
+        android:id="@+id/etNombreModelo"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/bg_dialog_field"
+        android:hint="Nombre del modelo"
+        android:textSize="14sp"
+        android:paddingHorizontal="16dp"
+        android:layout_marginBottom="20dp" />
+
+    <!-- Fila 1: Categoría y Color -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp">
+
+        <Spinner
+            android:id="@+id/spinnerCategoria"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/bg_dialog_field" />
+
+        <EditText
+            android:id="@+id/etColor"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_dialog_field"
+            android:hint="Color"
+            android:textSize="14sp"
+            android:paddingHorizontal="16dp" />
+    </LinearLayout>
+
+    <!-- Fila 2: Talla y Stock -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp">
+
+        <Spinner
+            android:id="@+id/spinnerTalla"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/bg_dialog_field" />
+
+        <EditText
+            android:id="@+id/etStock"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_dialog_field"
+            android:hint="Stock"
+            android:inputType="number"
+            android:textSize="14sp"
+            android:paddingHorizontal="16dp" />
+    </LinearLayout>
+
+    <!-- Fila 3: Precio y Costo -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp">
+
+        <EditText
+            android:id="@+id/etPrecio"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/bg_dialog_field"
+            android:hint="Precio"
+            android:inputType="number"
+            android:textSize="14sp"
+            android:paddingHorizontal="16dp" />
+
+        <EditText
+            android:id="@+id/etCosto"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_dialog_field"
+            android:hint="Costo"
+            android:inputType="number"
+            android:textSize="14sp"
+            android:paddingHorizontal="16dp" />
+    </LinearLayout>
+
+    <!-- Checkbox descuento -->
+    <CheckBox
+        android:id="@+id/cbDescuento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¿Tiene descuento?"
+        android:textSize="14sp"
+        android:textColor="#374151"
+        android:layout_marginBottom="20dp" />
+
+    <!-- Selector de imagen -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/bg_dialog_field"
+        android:padding="12dp"
+        android:layout_marginBottom="24dp"
+        android:gravity="center_vertical">
+
+        <Button
+            android:id="@+id/btnSeleccionarImagen"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:text="Seleccionar archivo"
+            android:textSize="12sp"
+            android:textColor="#374151"
+            android:background="#E5E7EB"
+            android:layout_marginEnd="12dp" />
+
+        <TextView
+            android:id="@+id/tvNombreArchivo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Sin archivos seleccionados"
+            android:textSize="13sp"
+            android:textColor="#9CA3AF"
+            android:ellipsize="middle"
+            android:maxLines="1" />
+    </LinearLayout>
+
+    <!-- Botones mejorados -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp">
+
+        <Button
+            android:id="@+id/btnCancelar"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1"
+            android:text="Cancelar"
+            android:textSize="13sp"
+            android:textColor="#374151"
+            android:background="#E5E7EB"
+            android:layout_marginEnd="12dp" />
+
+        <Button
+            android:id="@+id/btnGuardar"
+            android:layout_width="0dp"
+            android:layout_height="44dp"
+            android:layout_weight="1.5"
+            android:text="Guardar producto"
+            android:textSize="13sp"
+            android:textColor="@android:color/white"
+            android:background="#2563EB" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    android:padding="24dp">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Guía de tallas"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#1F2937" />
+
+        <ImageButton
+            android:id="@+id/btnCerrar"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:tint="#6B7280" />
+    </LinearLayout>
+
+    <!-- Tabla -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#F3F4F6"
+        android:padding="12dp">
+
+        <!-- Header de tabla -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#F3F4F6"
+            android:paddingVertical="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="EU"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#374151"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="US"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#374151"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="CM"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#374151"
+                android:gravity="center" />
+        </LinearLayout>
+
+        <!-- Fila 35 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@android:color/white"
+            android:paddingVertical="10dp">
+
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="35" android:textSize="14sp" android:textColor="#4B5563" android:gravity="center" />
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="5" android:textSize="14sp" android:textColor="#4B5563" android:gravity="center" />
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="22.0" android:textSize="14sp" android:textColor="#4B5563" android:gravity="center" />
+        </LinearLayout>
+
+        <!-- Fila 36 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#F9FAFB"
+            android:paddingVertical="10dp">
+
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="36" android:textSize="14sp" android:textColor="#4B5563" android:gravity="center" />
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="5.5" android:textSize="14sp" android:textColor="#4B5563" android:gravity="center" />
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="22.7" android:textSize="14sp" android:textColor="#4B5563" android:gravity="center" />
+        </LinearLayout>
+
+        <!-- Fila 37 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@android:color/white"
+            android:paddingVertical="10dp">
+
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="37" android:textSize="14sp" android:textColor="#4B5563" android:gravity="center" />
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="6" android:textSize="14sp" android:textColor="#4B5563" android:gravity="center" />
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="23.4" android:textSize="14sp" android:textColor="#4B5563" android:gravity="center" />
+        </LinearLayout>
+
+        <!-- Fila 38 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#F9FAFB"
+            android:paddingVertical="10dp">
+
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="38" android:textSize="14sp" android:textColor="#4B5563" android:gravity="center" />
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="6.5" android:textSize="14sp" android:textColor="#4B5563" android:gravity="center" />
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="24.1" android:textSize="14sp" android:textColor="#4B5563" android:gravity="center" />
+        </LinearLayout>
+
+        <!-- Fila 39 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@android:color/white"
+            android:paddingVertical="10dp">
+
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="39" android:textSize="14sp" android:textColor="#4B5563" android:gravity="center" />
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="7" android:textSize="14sp" android:textColor="#4B5563" android:gravity="center" />
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="24.8" android:textSize="14sp" android:textColor="#4B5563" android:gravity="center" />
+        </LinearLayout>
+
+        <!-- Fila 40 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#F9FAFB"
+            android:paddingVertical="10dp">
+
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="40" android:textSize="14sp" android:textColor="#4B5563" android:gravity="center" />
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="7.5" android:textSize="14sp" android:textColor="#4B5563" android:gravity="center" />
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="25.5" android:textSize="14sp" android:textColor="#4B5563" android:gravity="center" />
+        </LinearLayout>
+
+        <!-- Fila 41 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@android:color/white"
+            android:paddingVertical="10dp">
+
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="41" android:textSize="14sp" android:textColor="#4B5563" android:gravity="center" />
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="8" android:textSize="14sp" android:textColor="#4B5563" android:gravity="center" />
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="26.2" android:textSize="14sp" android:textColor="#4B5563" android:gravity="center" />
+        </LinearLayout>
+
+        <!-- Fila 42 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#F9FAFB"
+            android:paddingVertical="10dp">
+
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="42" android:textSize="14sp" android:textColor="#4B5563" android:gravity="center" />
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="8.5" android:textSize="14sp" android:textColor="#4B5563" android:gravity="center" />
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="26.9" android:textSize="14sp" android:textColor="#4B5563" android:gravity="center" />
+        </LinearLayout>
+
+        <!-- Fila 43 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@android:color/white"
+            android:paddingVertical="10dp">
+
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="43" android:textSize="14sp" android:textColor="#4B5563" android:gravity="center" />
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="9" android:textSize="14sp" android:textColor="#4B5563" android:gravity="center" />
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="27.6" android:textSize="14sp" android:textColor="#4B5563" android:gravity="center" />
+        </LinearLayout>
+
+        <!-- Fila 44 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#F9FAFB"
+            android:paddingVertical="10dp">
+
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="44" android:textSize="14sp" android:textColor="#4B5563" android:gravity="center" />
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="9.5" android:textSize="14sp" android:textColor="#4B5563" android:gravity="center" />
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="28.3" android:textSize="14sp" android:textColor="#4B5563" android:gravity="center" />
+        </LinearLayout>
+
+        <!-- Fila 45 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@android:color/white"
+            android:paddingVertical="10dp">
+
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="45" android:textSize="14sp" android:textColor="#4B5563" android:gravity="center" />
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="10" android:textSize="14sp" android:textColor="#4B5563" android:gravity="center" />
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="29.0" android:textSize="14sp" android:textColor="#4B5563" android:gravity="center" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

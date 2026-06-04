@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp"
+    app:cardBackgroundColor="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Imagen del producto con botón de favorito -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp">
+
+            <ImageView
+                android:id="@+id/ivProducto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:background="#FFFFFF"
+                android:src="@drawable/ic_shoe_placeholder" />
+
+            <ImageView
+                android:id="@+id/ivFavorito"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="top|end"
+                android:layout_margin="12dp"
+                android:src="@drawable/ic_favorite_border"
+                android:contentDescription="Favorito"
+                android:clickable="true"
+                android:focusable="true" />
+        </FrameLayout>
+
+        <!-- Información del producto -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <!-- Precio -->
+            <TextView
+                android:id="@+id/tvPrecio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$80.000"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <!-- Nombre -->
+            <TextView
+                android:id="@+id/tvNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cool"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:layout_marginTop="4dp" />
+
+            <!-- Subcategoría -->
+            <TextView
+                android:id="@+id/tvSubcategoria"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PERFORMANCE"
+                android:textColor="#6B7280"
+                android:textSize="11sp"
+                android:textAllCaps="true"
+                android:letterSpacing="0.1"
+                android:layout_marginTop="2dp" />
+
+            <!-- Tallas -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:id="@+id/btnTalla1"
+                    android:layout_width="36dp"
+                    android:layout_height="28dp"
+                    android:text="21"
+                    android:textSize="11sp"
+                    android:gravity="center"
+                    android:background="@drawable/bg_talla"
+                    android:textColor="#374151" />
+
+                <TextView
+                    android:id="@+id/btnTalla2"
+                    android:layout_width="36dp"
+                    android:layout_height="28dp"
+                    android:text="22"
+                    android:textSize="11sp"
+                    android:gravity="center"
+                    android:layout_marginStart="4dp"
+                    android:background="@drawable/bg_talla"
+                    android:textColor="#374151" />
+
+                <TextView
+                    android:id="@+id/btnTalla3"
+                    android:layout_width="36dp"
+                    android:layout_height="28dp"
+                    android:text="23"
+                    android:textSize="11sp"
+                    android:gravity="center"
+                    android:layout_marginStart="4dp"
+                    android:background="@drawable/bg_talla"
+                    android:textColor="#374151" />
+
+                <TextView
+                    android:id="@+id/btnTalla4"
+                    android:layout_width="36dp"
+                    android:layout_height="28dp"
+                    android:text="24"
+                    android:textSize="11sp"
+                    android:gravity="center"
+                    android:layout_marginStart="4dp"
+                    android:background="@drawable/bg_talla"
+                    android:textColor="#374151" />
+
+                <TextView
+                    android:id="@+id/btnTalla5"
+                    android:layout_width="36dp"
+                    android:layout_height="28dp"
+                    android:text="25"
+                    android:textSize="11sp"
+                    android:gravity="center"
+                    android:layout_marginStart="4dp"
+                    android:background="@drawable/bg_talla"
+                    android:textColor="#374151" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

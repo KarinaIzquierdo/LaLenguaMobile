@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_main"
+    app:startDestination="@id/nav_new_inicio">
+
+    <fragment
+        android:id="@+id/nav_new_inicio"
+        android:name="com.marents.app.ui.categorias.CategoriasFragment"
+        android:label="Inicio"
+        tools:layout="@layout/fragment_categories" />
+
+    <fragment
+        android:id="@+id/productosCategoriaFragment"
+        android:name="com.marents.app.ui.productos.ProductosCategoriaFragment"
+        android:label="Tienda"
+        tools:layout="@layout/fragment_productos_categoria">
+        <argument
+            android:name="categoriaNombre"
+            app:argType="string"
+            android:defaultValue="General" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/productoDetalleFragment"
+        android:name="com.marents.app.ui.productos.ProductoDetalleFragment"
+        android:label="Detalle del Producto"
+        tools:layout="@layout/fragment_producto_detalle">
+        <argument
+            android:name="producto"
+            app:argType="com.marents.app.Producto" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_new_favoritos"
+        android:name="com.marents.app.ui.home.FavoritosFragment"
+        android:label="Favoritos"
+        tools:layout="@layout/fragment_favoritos_real" />
+
+    <fragment
+        android:id="@+id/nav_new_carrito"
+        android:name="com.marents.app.ui.carrito.CarritoFragment"
+        android:label="Carrito"
+        tools:layout="@layout/fragment_carrito" />
+
+    <fragment
+        android:id="@+id/nav_new_perfil"
+        android:name="com.marents.app.ui.main_menu.NewProfileFragment"
+        android:label="Perfil"
+        tools:layout="@layout/fragment_new_profile" />
+
+</navigation>
